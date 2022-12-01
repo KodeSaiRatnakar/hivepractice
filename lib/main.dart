@@ -6,7 +6,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await Hive.openBox('data_box');
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -141,7 +141,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                           ElevatedButton(
                                               onPressed: () {
-                                                saveEditData(items[index]['key'] , {
+                                                saveEditData(
+                                                    items[index]['key'], {
                                                   'name': name.text,
                                                   'quantity': quantity.text
                                                 });
@@ -157,12 +158,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                     );
                                   });
                             },
-                            icon: const Icon(Icons.edit)),IconButton(onPressed: (){
+                            icon: const Icon(Icons.edit)),
+                        IconButton(
+                            onPressed: () {
                               delete(items[index]['key']);
 
-                                fetchedData();
-
-                        }, icon: const Icon(Icons.delete))
+                              fetchedData();
+                            },
+                            icon: const Icon(Icons.delete))
                       ],
                     ),
                   ),
